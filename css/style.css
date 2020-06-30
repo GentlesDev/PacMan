@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+    outline: 0;
+}
+body, 
+.container{
+    margin: 0;
+    padding: 0;
+}
+.game-map{
+    background-color: black;
+    display: block;
+}
