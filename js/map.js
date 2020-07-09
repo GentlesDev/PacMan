@@ -30,8 +30,8 @@ const rectangles = [
     //TOP LEFT (DIRECTION RIGHT)
     {
         id: 0, x: 0, y: 0, width: ((2 / 3) * canvas.width), height: 15
-        
-    },    
+
+    },
     //TOP RIGHT (DIRECTION LEFT)
     {
         id: 1, x: canvas.width, y: 0, width: (-(1 / 4) * canvas.width), height: 15
@@ -39,27 +39,27 @@ const rectangles = [
     //TOP LEFT (DIRECTION BOTTOM)
     {
         id: 2, x: 0, y: 0, width: 15, height: (1 / 4) * canvas.height
-    },    
+    },
     //BOTTOM LEFT (DIRECTION TOP)
     {
-        id: 3, x: 0, y: canvas.height, width: 15 , height: -(1 / 2) * canvas.height
-    },    
+        id: 3, x: 0, y: canvas.height, width: 15, height: -(1 / 2) * canvas.height
+    },
     //BOTTOM LEFT (DIRECTION RIGHT)
     {
-        id: 4, x: 0, y: canvas.height - 15, width: ((2 / 3) * canvas.width), height: 15 
-    },    
+        id: 4, x: 0, y: canvas.height - 15, width: ((2 / 3) * canvas.width), height: 15
+    },
     //BOTTOM RIGHT (DIRECTION LEFT)
     {
         id: 5, x: canvas.width, y: canvas.height - 15, width: (-(1 / 4) * canvas.width), height: 15
-    },    
+    },
     //TOP RIGHT (DIRECTION BOTTOM)
     {
         id: 6, x: canvas.width - 15, y: 0, width: 15, height: (1 / 4) * canvas.height
-    },    
+    },
     //BOTTOM RIGHT (DIRECTION BOTTOM)
     {
         id: 7, x: canvas.width - 15, y: canvas.height, width: 15, height: -(1 / 2) * canvas.height
-    }    
+    }
 ];
 
 
@@ -77,17 +77,17 @@ rectangles.forEach(rectangle => {
 
 function drawBorders() {
 
-rectangles.forEach(rectangle => {
-    context.beginPath();
-    context.fillRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
-    context.fillStyle = 'yellow';
-    context.fill();
+    rectangles.forEach(rectangle => {
+        context.beginPath();
+        context.fillRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+        context.fillStyle = 'yellow';
+        context.fill();
 
-    hitCtx.beginPath();
-    hitCtx.fillRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
-    hitCtx.fillStyle = 'yellow';
-    hitCtx.fill();
-});
+        hitCtx.beginPath();
+        hitCtx.fillRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+        hitCtx.fillStyle = 'yellow';
+        hitCtx.fill();
+    });
 }
 
 
@@ -108,44 +108,45 @@ function rectArrondi(ctx, x, y, largeur, hauteur, rayon) {
 }
 
 function drawGentles() {
-    
+
     //                   x    y  l   h   r
-    rectArrondi(context, 53, 33, 150, 70, 10);
-    rectArrondi(context, 245, 33, 150, 70, 10);
-    rectArrondi(context, 435, 33, 150, 70, 10);
+    rectArrondi(context, -(canvas.width - (canvas.width * 8)) / 100, -(canvas.height - (canvas.height * 18.68)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(context, -(canvas.width - (canvas.width * 19.1)) / 100, -(canvas.height - (canvas.height * 18.68)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(context, -(canvas.width - (canvas.width * 30.2)) / 100, -(canvas.height - (canvas.height * 18.68)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
 
 
-    rectArrondi(context, 110, 125, -50, 400, 10);
-    
-    rectArrondi(context, 53, 565, 150, 70, 10);
-    rectArrondi(context, 245, 565, 150, 70, 10);
-    rectArrondi(context, 435, 565, 150, 70, 10); 
-    
-    rectArrondi(context, 435, 300, 330, 70, 10);
-    
-    rectArrondi(context, 695 , 380, 70, 218, 10);
-    
-    
-    
-    
-    
-    rectArrondi(context, 960, 33, 150, 70, 10);
-    rectArrondi(context, 1150, 33, 150, 70, 10);
-    rectArrondi(context, 1340, 33, 150, 70, 10);
-    
-    rectArrondi(context, 1530, 125, 50, 400, 10);
-    
-    
-    rectArrondi(context, 1110, 125, -50, 180, 10);
-    rectArrondi(context, 1110, 345, -50, 180, 10);
-    
-    
-    rectArrondi(context, 960, 565, 150, 70, 10);
-    rectArrondi(context, 1150, 565, 150, 70, 10);
-    rectArrondi(context, 1340, 565, 150, 70, 10); 
-    
+    rectArrondi(context, -(canvas.width - (canvas.width * 12)) / 100, -(canvas.height - (canvas.height * 28.6)) / 100, (canvas.width - (canvas.width * 2.6)) / 100, -(canvas.height - (canvas.height * 42.69)) / 100, 10);
 
-    
+
+    rectArrondi(context, -(canvas.width - (canvas.width * 8)) / 100, -(canvas.height - (canvas.height * 73)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(context, -(canvas.width - (canvas.width * 19.1)) / 100, -(canvas.height - (canvas.height * 73)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(context, -(canvas.width - (canvas.width * 30.2)) / 100, -(canvas.height - (canvas.height * 73)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+
+    rectArrondi(context, -(canvas.width - (canvas.width * 26.66)) / 100, (canvas.height / 2) + (canvas.height - (canvas.height * 7.47)) / 100, -(canvas.width - (canvas.width * 17.19)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+
+    rectArrondi(context, -(canvas.width - (canvas.width * 40.198)) / 100, (canvas.height / 2) - (canvas.height - (canvas.height * 5)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, -(canvas.height - (canvas.height * 23.27)) / 100, 10);
+
+
+
+
+
+    rectArrondi(context, -(canvas.width - (canvas.width * 53)) / 100, -(canvas.height - (canvas.height * 18.68)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(context, -(canvas.width - (canvas.width * 65)) / 100, -(canvas.height - (canvas.height * 18.68)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(context, -(canvas.width - (canvas.width * 77)) / 100, -(canvas.height - (canvas.height * 18.68)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+
+    rectArrondi(context, -(canvas.width - (canvas.width * 86)) / 100, -(canvas.height - (canvas.height * 28.6)) / 100, -(canvas.width - (canvas.width * 4)) / 100, -(canvas.height - (canvas.height * 42.69)) / 100, 10);
+
+
+    rectArrondi(context, -(canvas.width - (canvas.width * 60)) / 100, -(canvas.height - (canvas.height * 28.6)) / 100, (canvas.width - (canvas.width * 4)) / 100, -(canvas.height - (canvas.height * 19.21)) / 100, 10);
+    rectArrondi(context, -(canvas.width - (canvas.width * 60)) / 100, -(canvas.height - (canvas.height * 50)) / 100, (canvas.width - (canvas.width * 4)) / 100, -(canvas.height - (canvas.height * 19.21)) / 100, 10);
+
+
+    rectArrondi(context, -(canvas.width - (canvas.width * 53)) / 100, -(canvas.height - (canvas.height * 73)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(context, -(canvas.width - (canvas.width * 65)) / 100, -(canvas.height - (canvas.height * 73)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(context, -(canvas.width - (canvas.width * 77)) / 100, -(canvas.height - (canvas.height * 73)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+
+
+
     for (var i = 0; i < canvas.width; i++) {
         context.fillRect(51 + i * 16, 35, 4, 4);
     }
@@ -160,42 +161,41 @@ function drawGentles() {
 
 
 
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 8)) / 100, -(canvas.height - (canvas.height * 18.68)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 19.1)) / 100, -(canvas.height - (canvas.height * 18.68)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 30.2)) / 100, -(canvas.height - (canvas.height * 18.68)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
 
 
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 12)) / 100, -(canvas.height - (canvas.height * 28.6)) / 100, (canvas.width - (canvas.width * 2.6)) / 100, -(canvas.height - (canvas.height * 42.69)) / 100, 10);
 
 
-    rectArrondi(hitCtx, 53, 33, 150, 70, 10);
-    rectArrondi(hitCtx, 245, 33, 150, 70, 10);
-    rectArrondi(hitCtx, 435, 33, 150, 70, 10);
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 8)) / 100, -(canvas.height - (canvas.height * 73)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 19.1)) / 100, -(canvas.height - (canvas.height * 73)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 30.2)) / 100, -(canvas.height - (canvas.height * 73)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
 
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 26.66)) / 100, (canvas.height / 2) + (canvas.height - (canvas.height * 7.47)) / 100, -(canvas.width - (canvas.width * 17.19)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
 
-    rectArrondi(hitCtx, 53, 125, 50, 400, 10);
-
-    rectArrondi(hitCtx, 53, 565, 150, 70, 10);
-    rectArrondi(hitCtx, 245, 565, 150, 70, 10);
-    rectArrondi(hitCtx, 435, 565, 150, 70, 10);
-
-    rectArrondi(hitCtx, 435, 300, 330, 70, 10);
-
-    rectArrondi(hitCtx, 695, 380, 70, 218, 10);
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 40.198)) / 100, (canvas.height / 2) - (canvas.height - (canvas.height * 5)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, -(canvas.height - (canvas.height * 23.27)) / 100, 10);
 
 
 
 
 
-    rectArrondi(hitCtx, 960, 33, 150, 70, 10);
-    rectArrondi(hitCtx, 1150, 33, 150, 70, 10);
-    rectArrondi(hitCtx, 1340, 33, 150, 70, 10);
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 53)) / 100, -(canvas.height - (canvas.height * 18.68)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 65)) / 100, -(canvas.height - (canvas.height * 18.68)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 77)) / 100, -(canvas.height - (canvas.height * 18.68)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
 
-    rectArrondi(hitCtx, 1530, 125, 50, 400, 10);
-
-
-    rectArrondi(hitCtx, 1110, 125, -50, 180, 10);
-    rectArrondi(hitCtx, 1110, 345, -50, 180, 10);
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 86)) / 100, -(canvas.height - (canvas.height * 28.6)) / 100, -(canvas.width - (canvas.width * 4)) / 100, -(canvas.height - (canvas.height * 42.69)) / 100, 10);
 
 
-    rectArrondi(hitCtx, 960, 565, 150, 70, 10);
-    rectArrondi(hitCtx, 1150, 565, 150, 70, 10);
-    rectArrondi(hitCtx, 1340, 565, 150, 70, 10); 
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 60)) / 100, -(canvas.height - (canvas.height * 28.6)) / 100, (canvas.width - (canvas.width * 4)) / 100, -(canvas.height - (canvas.height * 19.21)) / 100, 10);
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 60)) / 100, -(canvas.height - (canvas.height * 50)) / 100, (canvas.width - (canvas.width * 4)) / 100, -(canvas.height - (canvas.height * 19.21)) / 100, 10);
+
+
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 53)) / 100, -(canvas.height - (canvas.height * 73)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 65)) / 100, -(canvas.height - (canvas.height * 73)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
+    rectArrondi(hitCtx, -(canvas.width - (canvas.width * 77)) / 100, -(canvas.height - (canvas.height * 73)) / 100, -(canvas.width - (canvas.width * 7.81)) / 100, -(canvas.height - (canvas.height * 7.47)) / 100, 10);
 }
+
+
 
