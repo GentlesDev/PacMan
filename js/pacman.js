@@ -20,45 +20,93 @@ function right() {
     reduce2 = -0.5;
     mouthMove2 = -0.5;
     slider = setInterval(() => {
-        if (move1 > canvas.width || move3 > canvas.width) {
-            move1 = -10;
-            move3 = -10;
-        }
-        //console.log(move1, move3);
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.beginPath();
-        context.fillStyle = 'yellow';
-        //console.log(Math.round(mouthMove1 * 10) / 10);
-        context.arc(move1 += 10, move2, 15, (Math.round(mouthMove1 * 10) / 10), Math.PI);
-        mouthMove1 -= step1;
-        if (Math.round(mouthMove1 * 10) / 10 === reduce1 || Math.round(mouthMove1 * 10) / 10 === limit) {
-            step1 = -step1;
-            //console.log('aug');
+        const pixel = hitCtx.getImageData(move1 + 30, move2, 100, 100).data;
+        //console.log(pixel);
+        if (pixel[0] == 255) {
+            //clearInterval(slider);
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            drawBorders();
+            drawGentles();
+            context.beginPath();
+            context.fillStyle = 'yellow';
             //console.log(Math.round(mouthMove1 * 10) / 10);
+            context.arc(move1, move2, 15, (Math.round(mouthMove1 * 10) / 10), Math.PI);
+            mouthMove1 -= step1;
+            if (Math.round(mouthMove1 * 10) / 10 === reduce1 || Math.round(mouthMove1 * 10) / 10 === limit) {
+                step1 = -step1;
+                //console.log('aug');
+                //console.log(Math.round(mouthMove1 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.round(mouthMove1 * 10) / 10);
+                context.arc(move1, move2, 15, (Math.round(mouthMove1 * 10) / 10), Math.PI);
+            }
+            console.log(move1, move2);
+
+            context.fill();
+
+
+            context.beginPath();
+            context.fillStyle = 'yellow';
+            //console.log(Math.round(mouthMove2 * 10) / 10);
+            context.arc(move3, move4, 15, Math.PI, (Math.round(mouthMove2 * 10) / 10));
+            mouthMove2 += step2;
+            if (Math.round(mouthMove2 * 10) / 10 === reduce2 || Math.round(mouthMove2 * 10) / 10 === limit) {
+                step2 = -step2;
+                //console.log('aug');
+                //console.log(Math.round(mouthMove2 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.round(mouthMove2 * 10) / 10);
+                context.arc(move3, move4, 15, Math.PI, (Math.round(mouthMove2 * 10) / 10));
+            }
+            context.fill();
+            return move1, move2, move3, move4;
+        } else {
+            if (move1 > canvas.width || move3 > canvas.width) {
+                move1 = -10;
+                move3 = -10;
+            }
+            //console.log(move1, move3);
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            drawBorders();
+            drawGentles();
             context.beginPath();
             context.fillStyle = 'yellow';
             //console.log(Math.round(mouthMove1 * 10) / 10);
             context.arc(move1 += 10, move2, 15, (Math.round(mouthMove1 * 10) / 10), Math.PI);
-        }
-        context.fill();
+            mouthMove1 -= step1;
+            if (Math.round(mouthMove1 * 10) / 10 === reduce1 || Math.round(mouthMove1 * 10) / 10 === limit) {
+                step1 = -step1;
+                //console.log('aug');
+                //console.log(Math.round(mouthMove1 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.round(mouthMove1 * 10) / 10);
+                context.arc(move1 += 10, move2, 15, (Math.round(mouthMove1 * 10) / 10), Math.PI);
+            }
+            console.log(move1, move2);
+
+            context.fill();
 
 
-        context.beginPath();
-        context.fillStyle = 'yellow';
-        //console.log(Math.round(mouthMove2 * 10) / 10);
-        context.arc(move3 += 10, move4, 15, Math.PI, (Math.round(mouthMove2 * 10) / 10));
-        mouthMove2 += step2;
-        if (Math.round(mouthMove2 * 10) / 10 === reduce2 || Math.round(mouthMove2 * 10) / 10 === limit) {
-            step2 = -step2;
-            //console.log('aug');
-            //console.log(Math.round(mouthMove2 * 10) / 10);
             context.beginPath();
             context.fillStyle = 'yellow';
             //console.log(Math.round(mouthMove2 * 10) / 10);
             context.arc(move3 += 10, move4, 15, Math.PI, (Math.round(mouthMove2 * 10) / 10));
+            mouthMove2 += step2;
+            if (Math.round(mouthMove2 * 10) / 10 === reduce2 || Math.round(mouthMove2 * 10) / 10 === limit) {
+                step2 = -step2;
+                //console.log('aug');
+                //console.log(Math.round(mouthMove2 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.round(mouthMove2 * 10) / 10);
+                context.arc(move3 += 10, move4, 15, Math.PI, (Math.round(mouthMove2 * 10) / 10));
+            }
+            context.fill();
         }
-        context.fill();
-
+        return move1, move2, move3, move4;
     }, 50)
 }
 
@@ -71,44 +119,89 @@ function left() {
     step1 = 0.1;
     step2 = 0.1;
     slider = setInterval(() => {
-        if (move1 < 0) {
-            move1 = canvas.width + 10;
-            move3 = canvas.width + 10;
-        }
-        //console.log(move1, move3);
-
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.beginPath();
-        context.fillStyle = 'yellow';
-        //console.log(Math.round(mouthMove1 * 10) / 10);
-        context.arc(move1 -= 10, move2, 15, (Math.floor(mouthMove1 * 10) / 10), 0, true);
-        mouthMove1 += step1;
-        if (Math.floor(mouthMove1 * 10) / 10 === Math.floor(reduce1 * 10) / 10 || Math.floor(mouthMove1 * 10) / 10 === Math.floor(limit * 10) / 10) {
-            step1 = -step1;
-            //console.log('aug');
-            //console.log('aug' + Math.floor(mouthMove1 * 10) / 10);
+        const pixel = hitCtx.getImageData(move1 - 30, move2, 1, 1).data;
+        //console.log(pixel);
+        if (pixel[0] == 255) {
+            //console.log('tomare');
+            // clearInterval(slider);
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            drawBorders();
+            drawGentles();
             context.beginPath();
             context.fillStyle = 'yellow';
-            //console.log(Math.floor(mouthMove1 * 10) / 10);
+            //console.log(Math.round(mouthMove1 * 10) / 10);
+            context.arc(move1, move2, 15, (Math.floor(mouthMove1 * 10) / 10), 0, true);
+            mouthMove1 += step1;
+            if (Math.floor(mouthMove1 * 10) / 10 === Math.floor(reduce1 * 10) / 10 || Math.floor(mouthMove1 * 10) / 10 === Math.floor(limit * 10) / 10) {
+                step1 = -step1;
+                //console.log('aug');
+                //console.log('aug' + Math.floor(mouthMove1 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.floor(mouthMove1 * 10) / 10);
+                context.arc(move1, move2, 15, (Math.floor(mouthMove1 * 10) / 10), 0, true);
+            }
+            context.fill();
+
+            context.beginPath();
+            context.fillStyle = 'yellow';
+            //console.log(Math.floor(mouthMove2 * 10) / 10);
+            context.arc(move3, move4, 15, 0, (Math.floor(mouthMove2 * 10) / 10), true);
+            mouthMove2 -= step2;
+            if (Math.floor(mouthMove2 * 10) / 10 === Math.floor(reduce2 * 10) / 10 || Math.floor(mouthMove2 * 10) / 10 === Math.floor(-limit * 10) / 10) {
+                step2 = -step2;
+                //console.log('aug');
+                //console.log('aug' + Math.floor(mouthMove2 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.floor(mouthMove1 * 10) / 10);
+                context.arc(move3, move4, 15, 0, (Math.floor(mouthMove2 * 10) / 10), true);
+            }
+            context.fill();
+            return move1, move2, move3, move4;
+        } else {
+            if (move1 < 0) {
+                move1 = canvas.width + 10;
+                move3 = canvas.width + 10;
+            }
+            //console.log(move1, move3);
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            drawBorders();
+            drawGentles();
+            context.beginPath();
+            context.fillStyle = 'yellow';
+            //console.log(Math.round(mouthMove1 * 10) / 10);
             context.arc(move1 -= 10, move2, 15, (Math.floor(mouthMove1 * 10) / 10), 0, true);
-        }
-        context.fill();
+            mouthMove1 += step1;
+            if (Math.floor(mouthMove1 * 10) / 10 === Math.floor(reduce1 * 10) / 10 || Math.floor(mouthMove1 * 10) / 10 === Math.floor(limit * 10) / 10) {
+                step1 = -step1;
+                //console.log('aug');
+                //console.log('aug' + Math.floor(mouthMove1 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.floor(mouthMove1 * 10) / 10);
+                context.arc(move1 -= 10, move2, 15, (Math.floor(mouthMove1 * 10) / 10), 0, true);
+            }
+            context.fill();
 
-        context.beginPath();
-        context.fillStyle = 'yellow';
-        //console.log(Math.floor(mouthMove2 * 10) / 10);
-        context.arc(move3 -= 10, move4, 15, 0, (Math.floor(mouthMove2 * 10) / 10), true);
-        mouthMove2 -= step2;
-        if (Math.floor(mouthMove2 * 10) / 10 === Math.floor(reduce2 * 10) / 10 || Math.floor(mouthMove2 * 10) / 10 === Math.floor(-limit * 10) / 10) {
-            step2 = -step2;
-            //console.log('aug');
-            //console.log('aug' + Math.floor(mouthMove2 * 10) / 10);
             context.beginPath();
             context.fillStyle = 'yellow';
-            //console.log(Math.floor(mouthMove1 * 10) / 10);
+            //console.log(Math.floor(mouthMove2 * 10) / 10);
             context.arc(move3 -= 10, move4, 15, 0, (Math.floor(mouthMove2 * 10) / 10), true);
+            mouthMove2 -= step2;
+            if (Math.floor(mouthMove2 * 10) / 10 === Math.floor(reduce2 * 10) / 10 || Math.floor(mouthMove2 * 10) / 10 === Math.floor(-limit * 10) / 10) {
+                step2 = -step2;
+                //console.log('aug');
+                //console.log('aug' + Math.floor(mouthMove2 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.floor(mouthMove1 * 10) / 10);
+                context.arc(move3 -= 10, move4, 15, 0, (Math.floor(mouthMove2 * 10) / 10), true);
+            }
+            context.fill();
         }
-        context.fill();
+        return move1, move2, move3, move4;
 
     }, 50)
 }
@@ -122,45 +215,91 @@ function up() {
     reduce2 = - Math.PI / 3;
     mouthMove2 = - Math.PI / 3;
     slider = setInterval(() => {
-        //console.log('bas');
-        //console.log(move2);
-        if (move2 < 0) {
-            move2 = canvas.height + 10;
-            move4 = canvas.height + 10;
-        }
-        //console.log(move1, move3);
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.beginPath();
-        context.fillStyle = 'yellow';
-        //console.log(Math.round(mouthMove1 * 10) / 10);
-        context.arc(move1, move2 -= 10, 15, Math.PI / 2, Math.floor(mouthMove1 * 10) / 10);
-        mouthMove1 += step1;
-        if (Math.floor(mouthMove1 * 10) / 10 === Math.floor(reduce1 * 10) / 10 || Math.floor(mouthMove1 * 10) / 10 === Math.floor(limit * 10) / 10) {
-            step1 = -step1;
-            //console.log('aug');
-            //console.log(Math.floor(mouthMove1 * 10) / 10);
+        const pixel = hitCtx.getImageData(move1, move2 - 30, 1, 1).data;
+        //console.log(pixel);
+        if (pixel[0] == 255) {
+            //console.log('tomare');
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            drawBorders();
+            drawGentles();
             context.beginPath();
             context.fillStyle = 'yellow';
-            //console.log(Math.floor(mouthMove1 * 10) / 10);
-            context.arc(move1, move2 -= 10, 15, Math.PI / 2, Math.floor(mouthMove1 * 10) / 10);
+            //console.log(Math.round(mouthMove1 * 10) / 10);
+            context.arc(move1, move2, 15, Math.PI / 2, Math.floor(mouthMove1 * 10) / 10);
+            mouthMove1 += step1;
+            if (Math.floor(mouthMove1 * 10) / 10 === Math.floor(reduce1 * 10) / 10 || Math.floor(mouthMove1 * 10) / 10 === Math.floor(limit * 10) / 10) {
+                step1 = -step1;
+                //console.log('aug');
+                //console.log(Math.floor(mouthMove1 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.floor(mouthMove1 * 10) / 10);
+                context.arc(move1, move2, 15, Math.PI / 2, Math.floor(mouthMove1 * 10) / 10);
+            }
+            context.fill();
+
+            context.beginPath();
+            context.fillStyle = 'yellow';
+            //console.log(Math.floor(mouthMove2 * 10) / 10);
+            context.arc(move3, move4, 15, Math.PI / 2, Math.floor(mouthMove2 * 10) / 10, true);
+            mouthMove2 -= step2;
+            if (Math.floor(mouthMove2 * 10) / 10 === (Math.floor(reduce2 * 10) / 10) || Math.floor(mouthMove2 * 10) / 10 === (Math.floor(limit * 10) / 10)) {
+                step2 = -step2;
+                //console.log('aug');
+                //console.log('aug' + Math.floor(mouthMove2 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.floor(mouthMove2 * 10) / 10);
+                context.arc(move3, move4, 15, Math.PI / 2, Math.floor(mouthMove2 * 10) / 10, true);
+            }
+            context.fill();
+            return move1, move2, move3, move4;
         }
-        context.fill();
-        context.beginPath();
-        context.fillStyle = 'yellow';
-        //console.log(Math.floor(mouthMove2 * 10) / 10);
-        context.arc(move3, move4 -= 10, 15, Math.PI / 2, Math.floor(mouthMove2 * 10) / 10, true);
-        mouthMove2 -= step2;
-        if (Math.floor(mouthMove2 * 10) / 10 === (Math.floor(reduce2 * 10) / 10) || Math.floor(mouthMove2 * 10) / 10 === (Math.floor(limit * 10) / 10)) {
-            step2 = -step2;
-            //console.log('aug');
-            //console.log('aug' + Math.floor(mouthMove2 * 10) / 10);
+
+        //clearInterval(slider);
+        else {
+            //console.log('bas');
+            //console.log(move2);
+            if (move2 < 0) {
+                move2 = canvas.height + 10;
+                move4 = canvas.height + 10;
+            }
+            //console.log(move1, move3);
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            drawBorders();
+            drawGentles();
+            context.beginPath();
+            context.fillStyle = 'yellow';
+            //console.log(Math.round(mouthMove1 * 10) / 10);
+            context.arc(move1, move2 -= 10, 15, Math.PI / 2, Math.floor(mouthMove1 * 10) / 10);
+            mouthMove1 += step1;
+            if (Math.floor(mouthMove1 * 10) / 10 === Math.floor(reduce1 * 10) / 10 || Math.floor(mouthMove1 * 10) / 10 === Math.floor(limit * 10) / 10) {
+                step1 = -step1;
+                //console.log('aug');
+                //console.log(Math.floor(mouthMove1 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.floor(mouthMove1 * 10) / 10);
+                context.arc(move1, move2 -= 10, 15, Math.PI / 2, Math.floor(mouthMove1 * 10) / 10);
+            }
+            context.fill();
             context.beginPath();
             context.fillStyle = 'yellow';
             //console.log(Math.floor(mouthMove2 * 10) / 10);
             context.arc(move3, move4 -= 10, 15, Math.PI / 2, Math.floor(mouthMove2 * 10) / 10, true);
+            mouthMove2 -= step2;
+            if (Math.floor(mouthMove2 * 10) / 10 === (Math.floor(reduce2 * 10) / 10) || Math.floor(mouthMove2 * 10) / 10 === (Math.floor(limit * 10) / 10)) {
+                step2 = -step2;
+                //console.log('aug');
+                //console.log('aug' + Math.floor(mouthMove2 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.floor(mouthMove2 * 10) / 10);
+                context.arc(move3, move4 -= 10, 15, Math.PI / 2, Math.floor(mouthMove2 * 10) / 10, true);
+            }
+            context.fill();
         }
-        context.fill();
-
+        return move1, move2, move3, move4;
     }, 50)
 }
 
@@ -173,43 +312,89 @@ function down() {
     reduce2 = 2 * Math.PI / 3;
     mouthMove2 = 2 * Math.PI / 3;
     slider = setInterval(() => {
-        //console.log(move2);
-        if (move2 > canvas.height) {
-            move2 = -10;
-            move4 = -10;
-        }
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        //console.log('bas');
-        context.beginPath();
-        context.fillStyle = 'yellow';
-        //console.log(Math.floor(mouthMove1 * 10) / 10);
-        context.arc(move1, move2 += 10, 15, -Math.PI / 2, Math.floor(mouthMove1 * 10) / 10);
-        mouthMove1 += step1;
-        if (Math.floor(mouthMove1 * 10) / 10 === Math.floor(reduce1 * 10) / 10 || Math.floor(mouthMove1 * 10) / 10 === Math.floor(-limit * 10) / 10) {
-            step1 = -step1;
-            //console.log('aug');
+        const pixel = hitCtx.getImageData(move1, move2 + 30, 1, 1).data;
+        //console.log(pixel);
+        if (pixel[0] == 255) {
+            //console.log('tomare');
+            //clearInterval(slider);
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            drawBorders();
+            drawGentles();
+            //console.log('bas');
+            context.beginPath();
+            context.fillStyle = 'yellow';
             //console.log(Math.floor(mouthMove1 * 10) / 10);
+            context.arc(move1, move2, 15, -Math.PI / 2, Math.floor(mouthMove1 * 10) / 10);
+            mouthMove1 += step1;
+            if (Math.floor(mouthMove1 * 10) / 10 === Math.floor(reduce1 * 10) / 10 || Math.floor(mouthMove1 * 10) / 10 === Math.floor(-limit * 10) / 10) {
+                step1 = -step1;
+                //console.log('aug');
+                //console.log(Math.floor(mouthMove1 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.floor(mouthMove1 * 10) / 10);
+                context.arc(move1, move2, 15, -Math.PI / 2, Math.floor(mouthMove1 * 10) / 10);
+            }
+            context.fill();
+            //console.log(move2);
+            context.beginPath();
+            context.fillStyle = 'yellow';
+            //console.log(Math.floor(mouthMove2 * 10) / 10);
+            context.arc(move3, move4, 15, Math.floor(mouthMove2 * 10) / 10, -Math.PI / 2);
+            mouthMove2 -= step2;
+            if (Math.floor(mouthMove2 * 10) / 10 === Math.floor(reduce2 * 10) / 10 || Math.floor(mouthMove2 * 10) / 10 === Math.floor(-limit * 10) / 10) {
+                step2 = -step2;
+                //console.log('aug');
+                //console.log(Math.floor(mouthMove2 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.floor(mouthMove2 * 10) / 10);
+                context.arc(move3, move4, 15, Math.floor(mouthMove2 * 10) / 10, -Math.PI / 2);
+            }
+            context.fill();
+            return move1, move2, move3, move4;
+        } else {
+            //console.log(move2);
+            if (move2 > canvas.height) {
+                move2 = -10;
+                move4 = -10;
+            }
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            drawBorders();
+            drawGentles();
+            //console.log('bas');
             context.beginPath();
             context.fillStyle = 'yellow';
             //console.log(Math.floor(mouthMove1 * 10) / 10);
             context.arc(move1, move2 += 10, 15, -Math.PI / 2, Math.floor(mouthMove1 * 10) / 10);
-        }
-        context.fill();
-        //console.log(move2);
-        context.beginPath();
-        context.fillStyle = 'yellow';
-        //console.log(Math.floor(mouthMove2 * 10) / 10);
-        context.arc(move3, move4 += 10, 15, Math.floor(mouthMove2 * 10) / 10, -Math.PI / 2);
-        mouthMove2 -= step2;
-        if (Math.floor(mouthMove2 * 10) / 10 === Math.floor(reduce2 * 10) / 10 || Math.floor(mouthMove2 * 10) / 10 === Math.floor(-limit * 10) / 10) {
-            step2 = -step2;
-            //console.log('aug');
-            //console.log(Math.floor(mouthMove2 * 10) / 10);
+            mouthMove1 += step1;
+            if (Math.floor(mouthMove1 * 10) / 10 === Math.floor(reduce1 * 10) / 10 || Math.floor(mouthMove1 * 10) / 10 === Math.floor(-limit * 10) / 10) {
+                step1 = -step1;
+                //console.log('aug');
+                //console.log(Math.floor(mouthMove1 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.floor(mouthMove1 * 10) / 10);
+                context.arc(move1, move2 += 10, 15, -Math.PI / 2, Math.floor(mouthMove1 * 10) / 10);
+            }
+            context.fill();
+            //console.log(move2);
             context.beginPath();
             context.fillStyle = 'yellow';
             //console.log(Math.floor(mouthMove2 * 10) / 10);
             context.arc(move3, move4 += 10, 15, Math.floor(mouthMove2 * 10) / 10, -Math.PI / 2);
+            mouthMove2 -= step2;
+            if (Math.floor(mouthMove2 * 10) / 10 === Math.floor(reduce2 * 10) / 10 || Math.floor(mouthMove2 * 10) / 10 === Math.floor(-limit * 10) / 10) {
+                step2 = -step2;
+                //console.log('aug');
+                //console.log(Math.floor(mouthMove2 * 10) / 10);
+                context.beginPath();
+                context.fillStyle = 'yellow';
+                //console.log(Math.floor(mouthMove2 * 10) / 10);
+                context.arc(move3, move4 += 10, 15, Math.floor(mouthMove2 * 10) / 10, -Math.PI / 2);
+            }
+            context.fill();
         }
-        context.fill();
+        return move1, move2, move3, move4;
     }, 50)
 }
